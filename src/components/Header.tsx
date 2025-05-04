@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 export const Header = () => {
     return (
-        <header className="bg-background text-foreground sticky-top-0 ">
+        <header className="bg-background text-foreground sticky top-0 z-50 border-b border-b-muted-foreground">
             <Section className="flex items-center justify-between">
                 <h1 className="text-lg font-bold text-primary">Julien Joecker</h1>
                 <div className="flex-1"></div>
@@ -25,6 +25,6 @@ export const Header = () => {
                     </a>
                 </nav>
             </Section>
-        </header >
+        </header>
     )
 }
