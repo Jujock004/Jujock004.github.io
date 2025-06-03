@@ -7,9 +7,9 @@ export const projectList = [
     },
     {
         name: 'Pokemon Arena',
-        description: 'Development of an interactive Pokédex and tournament system',
+        description: 'Development of an interactive Pokédex and tournament system.',
         image: 'src/assets/images/pokemon-arena.png',
-        link: 'https://toulouse-p2-pokemon-arena-client.vercel.app/',
+        link: 'https://github.com/Jujock004/pokemon-arena',
     },
     {
         name: 'Ohé',
@@ -23,4 +23,4 @@ export const projectList = [
         image: 'src/assets/images/wildly-done.png',
         link: 'https://github.com/Jujock004/Project-1-TD3.github.io',
     },
-    ];
+];
