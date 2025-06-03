@@ -39,7 +39,7 @@ const TypeWriter = ({ text, delay = 50 }: { text: string; delay?: number }) => {
 export const Hero = () => {
     return (
         <div className="scroll-smooth">
-            <Section className="flex flex-col items-center justify-center gap-8 text-center py-20" id="about">
+            <Section className="flex flex-col items-center justify-center gap-8 text-center py-20">
                 <Avatar className="size-60 hover:scale-110 transition-all duration-300 hover:rotate-4">
                     <AvatarImage src="https://avatars.githubusercontent.com/u/179485912?v=4" alt="Avatar" />
                     <AvatarFallback>JJ</AvatarFallback>
