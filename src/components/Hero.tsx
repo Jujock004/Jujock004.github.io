@@ -6,7 +6,7 @@ import { Button, buttonVariants } from "./ui/button"
 import { cn } from "@/lib/utils"
 import { ProjectCard } from "./ProjectCard"
 import { projectList } from "@/utils/projects"
-import { MapPin } from "lucide-react";
+import { Info, MapPin } from "lucide-react";
 import { useEffect, useState } from "react"
 
 interface Project {
@@ -76,10 +76,11 @@ export const Hero = () => {
             </Section>
             <Section className="flex flex-col justify-center gap-8 py-20" id="about">
                 <h1 className="text-2xl font-bold ">About me</h1>
-                <div className="border border-solid bg-background text-foreground flex flex-col items-center gap-2 p-4 rounded-sm">
+                <div className="border border-solid bg-background text-foreground flex flex-col items-center gap-6 p-4 rounded-sm">
                     <p className="text-muted-foreground text-justify">I am a passionate junior developer with a 5-year background in marketing, which has given me a strong understanding of user behavior and the importance of creating solutions that truly resonate with the end-user. I love exploring new technologies and frameworks, and I’m always excited to start fresh projects that challenge my creativity and problem-solving skills.</p>
+                    <Button className="text-[18px] h-12 cursor-pointer self-start" variant="outline"><Info />More info</Button>
                 </div>
-                <p className="flex gap-4 italic"><MapPin /> Toulouse</p>
+                <p className="flex gap-4 italic"><MapPin /> Toulouse, France</p>
             </Section>
             <Section className="flex flex-col justify-center gap-8 py-20" id="projects">
                 <h1 className="text-2xl font-bold flex justify-end">My latest projects</h1>
@@ -105,7 +106,7 @@ export const Hero = () => {
                 </div>
             </Section>
             <Section className="flex flex-col justify-center gap-8 py-20" id="contact">
-                <h1 className="text-2xl font-bold flex justify-start">Want to work with me?</h1>
+                <h1 className="text-2xl font-bold flex justify-start">Interested in collaborating with me?</h1>
                 <p className="text-muted-foreground">I'm always looking for new challenges and opportunities to grow. If you have a project in mind or just want to say hi, don't hesitate to contact me.</p>
                 <Button onClick={() => window.open('mailto:julien.joecker@gmail.com')} className="text-lg rounded-full cursor-pointer">Contact me</Button>
             </Section>
