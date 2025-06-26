@@ -8,6 +8,7 @@ import { ProjectCard } from "./ProjectCard"
 import { projectList } from "@/utils/projects"
 import { Info, MapPin } from "lucide-react";
 import { useEffect, useState } from "react"
+import getAge from "@/utils/age"
 
 interface Project {
     name: string
@@ -39,7 +40,7 @@ const TypeWriter = ({ text, delay = 50 }: { text: string; delay?: number }) => {
 export const Hero = () => {
     return (
         <div className="scroll-smooth">
-            <Section className="flex flex-col items-center justify-center gap-8 text-center py-20">
+            <Section className="flex flex-col items-center justify-center gap-8 text-center py-20" id="hero">
                 <Avatar className="size-60 hover:scale-110 transition-all duration-300 hover:rotate-4">
                     <AvatarImage src="https://avatars.githubusercontent.com/u/179485912?v=4" alt="Avatar" />
                     <AvatarFallback>JJ</AvatarFallback>
@@ -49,10 +50,10 @@ export const Hero = () => {
                         <TypeWriter text="Hi, I'm Julien 👋" />
                     </h1>
                     <p className="text-lg text-muted-foreground">
-                        <TypeWriter text="I'm a web developer passionate in building new projects." delay={30} />
+                        <TypeWriter text="A web developer passionate in building new projects." delay={30} />
                     </p>
                     <p className="text-lg text-muted-foreground">
-                        <TypeWriter text="I love to learn new technologies and improve my skills." delay={30} />
+                        <TypeWriter text="I love to learn new technologies and meet new challenges." delay={30} />
                     </p>
                 </div>
                 <nav className="flex items-center gap-2">
@@ -74,15 +75,19 @@ export const Hero = () => {
                     <Button onClick={() => window.open('src/assets/files/CV_Julien_Joecker.pdf')} className="text-lg rounded-full cursor-pointer">My resume</Button>
                 </div>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 py-20" id="about">
+            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-14" id="about">
                 <h1 className="text-2xl font-bold ">About me</h1>
                 <div className="border border-solid bg-background text-foreground flex flex-col items-center gap-6 p-4 rounded-sm">
-                    <p className="text-muted-foreground text-justify">I am a passionate junior developer with a 5-year background in marketing, which has given me a strong understanding of user behavior and the importance of creating solutions that truly resonate with the end-user. I love exploring new technologies and frameworks, and I’m always excited to start fresh projects that challenge my creativity and problem-solving skills.</p>
-                    <Button className="text-[18px] h-12 cursor-pointer self-start" variant="outline"><Info />More info</Button>
+                    <p className="text-muted-foreground text-justify">
+                        Hi, I'm Julien, {getAge()} years old.
+                        <br /><br />
+                        After 5 years working in marketing, I chose to shift careers and dive into web development — a field that had intrigued me for years. I joined Wild Code School to train as a full-stack developer, and successfully earned my Web & Mobile Web Developer certificate.
+                        Next, I’ll be continuing my journey with a Bachelor’s in Web Development at Ynov Campus starting September 2025, through a work-study program, aiming to earn the official title of Software designer and developer.</p>
+                    <Button className="h-12 cursor-pointer self-start" variant="outline"><Info />My journey</Button>
                 </div>
                 <p className="flex gap-4 italic"><MapPin /> Toulouse, France</p>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 py-20" id="projects">
+            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-14" id="projects">
                 <h1 className="text-2xl font-bold flex justify-end">My latest projects</h1>
                 <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-4">
                     {projects.map((project) => (
@@ -96,17 +101,17 @@ export const Hero = () => {
                     ))}
                 </div>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 py-20" id="stack">
+            <Section className="flex flex-col justify-center gap-8 sm:py-20 scroll-mt-14" id="stack">
                 <h1 className="text-2xl font-bold flex justify-start">My stack</h1>
-                <div className="border border-solid bg-background text-foreground flex flex-col items-center sm:flex-row justify-around gap-4 p-4 rounded-sm relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/10 before:to-secondary/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity">
-                    <img className="transition-all duration-500 transform hover:scale-110 hover:-translate-y-2" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" alt="react-logo" />
-                    <img className="transition-all duration-500 transform hover:scale-110 hover:-translate-y-2" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" alt="node-logo" />
-                    <img className="transition-all duration-500 transform hover:scale-110 hover:-translate-y-2" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original-wordmark.svg" alt="tailwind-logo" />
-                    <img className="transition-all duration-500 transform hover:scale-110 hover:-translate-y-2" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" alt="mysql-logo" />
+                <div className="border border-solid bg-background text-foreground flex flex-col items-center sm:flex-row justify-around gap-4 p-4 rounded-sm relative overflow-hidden hover:bg-primary/10 transition-colors">
+                    <img className="transition-all duration-500 transform hover:scale-110" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" alt="react-logo" title="React" />
+                    <img className="transition-all duration-500 transform hover:scale-110" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain-wordmark.svg" alt="node-logo" title="Node" />
+                    <img className="transition-all duration-500 transform hover:scale-110" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="tailwind-logo" title="Tailwind" />
+                    <img className="transition-all duration-500 transform hover:scale-110" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-plain-wordmark.svg" alt="mysql-logo" title="MySQL"/>
                 </div>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 py-20" id="contact">
-                <h1 className="text-2xl font-bold flex justify-start">Interested in collaborating with me?</h1>
+            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-14" id="contact">
+                <h1 className="text-2xl font-bold flex justify-start">Let's work together!</h1>
                 <p className="text-muted-foreground">I'm always looking for new challenges and opportunities to grow. If you have a project in mind or just want to say hi, don't hesitate to contact me.</p>
                 <Button onClick={() => window.open('mailto:julien.joecker@gmail.com')} className="text-lg rounded-full cursor-pointer">Contact me</Button>
             </Section>
