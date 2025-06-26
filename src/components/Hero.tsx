@@ -9,6 +9,7 @@ import { projectList } from "@/utils/projects"
 import { Info, MapPin } from "lucide-react";
 import { useEffect, useState } from "react"
 import getAge from "@/utils/age"
+import getAge from "@/utils/age"
 
 interface Project {
     name: string
