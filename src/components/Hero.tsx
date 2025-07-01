@@ -9,6 +9,7 @@ import { projectList } from "@/utils/projects"
 import { Info, MapPin } from "lucide-react";
 import { useEffect, useState } from "react"
 import getAge from "@/utils/age"
+import { Form } from "./Form"
 
 interface Project {
     name: string
@@ -47,11 +48,12 @@ export const Hero = () => {
                 </Avatar>
                 <div className="flex flex-col items-center gap-2">
                     <h1 className="text-4xl font-bold text-primary">
-                        <TypeWriter text="Hi, I'm Julien 👋" />
+                        Hi, I'm Julien 👋
                     </h1>
                     <p className="text-lg text-muted-foreground">
                         <TypeWriter text="A web developer passionate in building new projects." delay={30} />
                     </p>
+                    <p className="text-xl">🎯 Currently seeking a 1-year apprenticeship starting in September</p>
                 </div>
                 <nav className="flex items-center gap-2">
                     <a
@@ -98,7 +100,7 @@ export const Hero = () => {
                     ))}
                 </div>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 sm:py-20 scroll-mt-20" id="stack">
+            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-20" id="stack">
                 <h1 className="text-2xl font-bold flex justify-start">My stack</h1>
                 <div className="border border-solid bg-background text-foreground flex flex-col items-center sm:flex-row justify-around gap-4 p-4 rounded-sm relative overflow-hidden hover:bg-primary/10 transition-colors">
                     <img className="transition-all duration-500 transform hover:scale-110" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" alt="react-logo" title="React" />
@@ -107,11 +109,7 @@ export const Hero = () => {
                     <img className="transition-all duration-500 transform hover:scale-110" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-plain-wordmark.svg" alt="mysql-logo" title="MySQL"/>
                 </div>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-20" id="contact">
-                <h1 className="text-2xl font-bold flex justify-start">Let's work together!</h1>
-                <p className="text-muted-foreground">I'm always looking for new challenges and opportunities to grow. If you have a project in mind or just want to say hi, don't hesitate to contact me.</p>
-                <Button onClick={() => window.open('mailto:julien.joecker@gmail.com')} className="text-lg rounded-full cursor-pointer">Contact me</Button>
-            </Section>
+            <Form />
         </div>
     )
 }
