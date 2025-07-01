@@ -7,10 +7,10 @@ import { cn } from "@/lib/utils"
 export const Header = () => {
     return (
         <header className="bg-background/80 backdrop-blur-sm text-foreground sticky top-0 z-50 border-b border-b-muted-foreground">
-            <Section className="flex items-center justify-between">
-                <a href="hero">
+            <Section className="flex items-center justify-between h-18">
+                <a href="#hero">
                     <h1 className="text-lg font-bold text-primary">
-                        Julien Joecker
+                        JULIEN JOECKER
                     </h1>
                 </a>
                 <nav className="hidden md:flex items-center gap-6">

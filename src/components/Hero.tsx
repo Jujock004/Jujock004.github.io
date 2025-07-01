@@ -40,7 +40,7 @@ const TypeWriter = ({ text, delay = 50 }: { text: string; delay?: number }) => {
 export const Hero = () => {
     return (
         <div className="scroll-smooth">
-            <Section className="flex flex-col items-center justify-center gap-8 text-center py-20" id="hero">
+            <Section className="flex flex-col items-center justify-center gap-8 text-center min-h-screen" id="hero">
                 <Avatar className="size-60 hover:scale-110 transition-all duration-300 hover:rotate-4">
                     <AvatarImage src="https://avatars.githubusercontent.com/u/179485912?v=4" alt="Avatar" />
                     <AvatarFallback>JJ</AvatarFallback>
@@ -51,9 +51,6 @@ export const Hero = () => {
                     </h1>
                     <p className="text-lg text-muted-foreground">
                         <TypeWriter text="A web developer passionate in building new projects." delay={30} />
-                    </p>
-                    <p className="text-lg text-muted-foreground">
-                        <TypeWriter text="I love to learn new technologies and meet new challenges." delay={30} />
                     </p>
                 </div>
                 <nav className="flex items-center gap-2">
@@ -75,7 +72,7 @@ export const Hero = () => {
                     <Button onClick={() => window.open('src/assets/files/CV_Julien_Joecker.pdf')} className="text-lg rounded-full cursor-pointer">My resume</Button>
                 </div>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-14" id="about">
+            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-20" id="about">
                 <h1 className="text-2xl font-bold ">About me</h1>
                 <div className="border border-solid bg-background text-foreground flex flex-col items-center gap-6 p-4 rounded-sm">
                     <p className="text-muted-foreground text-justify">
@@ -87,7 +84,7 @@ export const Hero = () => {
                 </div>
                 <p className="flex gap-4 italic"><MapPin /> Toulouse, France</p>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-14" id="projects">
+            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-20" id="projects">
                 <h1 className="text-2xl font-bold flex justify-end">My latest projects</h1>
                 <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-4">
                     {projects.map((project) => (
@@ -101,7 +98,7 @@ export const Hero = () => {
                     ))}
                 </div>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 sm:py-20 scroll-mt-14" id="stack">
+            <Section className="flex flex-col justify-center gap-8 sm:py-20 scroll-mt-20" id="stack">
                 <h1 className="text-2xl font-bold flex justify-start">My stack</h1>
                 <div className="border border-solid bg-background text-foreground flex flex-col items-center sm:flex-row justify-around gap-4 p-4 rounded-sm relative overflow-hidden hover:bg-primary/10 transition-colors">
                     <img className="transition-all duration-500 transform hover:scale-110" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" alt="react-logo" title="React" />
@@ -110,7 +107,7 @@ export const Hero = () => {
                     <img className="transition-all duration-500 transform hover:scale-110" width={100} src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-plain-wordmark.svg" alt="mysql-logo" title="MySQL"/>
                 </div>
             </Section>
-            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-14" id="contact">
+            <Section className="flex flex-col justify-center gap-8 py-20 scroll-mt-20" id="contact">
                 <h1 className="text-2xl font-bold flex justify-start">Let's work together!</h1>
                 <p className="text-muted-foreground">I'm always looking for new challenges and opportunities to grow. If you have a project in mind or just want to say hi, don't hesitate to contact me.</p>
                 <Button onClick={() => window.open('mailto:julien.joecker@gmail.com')} className="text-lg rounded-full cursor-pointer">Contact me</Button>
