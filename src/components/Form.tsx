@@ -7,25 +7,23 @@ import { Section } from './Section';
 export const Form = () => {
   const form = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success('Message sent successfully!');
+
     if (form.current) {
       try {
-        // Send the form data using EmailJS
-        emailjs.sendForm(
+        await emailjs.sendForm(
           import.meta.env.VITE_SERVICE_ID!,
           import.meta.env.VITE_TEMPLATE_ID!,
           form.current,
           import.meta.env.VITE_PUBLIC_KEY!
         );
+        toast.success('Message sent successfully!');
+        form.current.reset();
+        window.scrollTo({ top: 0, left: 0 });
       } catch (error) {
         console.error('Error sending email:', error);
         toast.error('Failed to send message. Please try again later.');
-      } finally {
-        // Reset the form after sending
-        form.current.reset();
-        window.scrollTo({ top: 0, left: 0 });
       }
     }
   };
