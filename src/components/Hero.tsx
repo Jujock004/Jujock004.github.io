@@ -10,6 +10,8 @@ import { Info, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import getAge from '@/utils/age';
 import { Form } from './Form';
+import JourneyModal from './JourneyModal';
+import useModal from '@/hooks/useModal';
 
 interface Project {
   name: string;
@@ -39,6 +41,7 @@ const TypeWriter = ({ text, delay = 50 }: { text: string; delay?: number }) => {
 };
 
 export const Hero = () => {
+  const { isShowing, toggle } = useModal();
   return (
     <div className="scroll-smooth">
       <Section
@@ -87,7 +90,11 @@ export const Hero = () => {
         </nav>
         <div className="flex items-center gap-4">
           <Button
-            onClick={() => window.open('mailto:julien.joecker@gmail.com')}
+            onClick={() => {
+              window.open(
+                'mailto:julien.joecker@gmail.com?subject=Contacte depuis Portfolio&body=Bonjour Julien,'
+              );
+            }}
             className="text-lg rounded-full cursor-pointer"
           >
             Contact me
@@ -121,10 +128,15 @@ export const Hero = () => {
             program, aiming to earn the official title of Software designer and
             developer.
           </p>
-          <Button className="h-12 cursor-pointer self-start" variant="outline">
+          <Button
+            className="h-12 cursor-pointer self-start"
+            variant="outline"
+            onClick={toggle}
+          >
             <Info />
             My journey
           </Button>
+          <JourneyModal isOpen={isShowing} onClose={toggle} />
         </div>
         <p className="flex gap-4 italic">
           <MapPin /> Toulouse, France
