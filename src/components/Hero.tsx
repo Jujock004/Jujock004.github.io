@@ -120,7 +120,7 @@ export const Hero = () => {
     <div className="scroll-smooth">
       {/* ── Hero ── */}
       <Section
-        className="relative flex flex-col items-center justify-center gap-8 text-center min-h-screen sm:py-0 scroll-mt-20"
+        className="relative flex flex-col items-center justify-center gap-8 text-center min-h-[calc(100dvh-4rem)] calc(100dvh - 4rem) md:min-h-screen"
         id="hero"
       >
         <Avatar className="size-60 hover:scale-110 transition-all duration-300 hover:rotate-4">
