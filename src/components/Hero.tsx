@@ -237,8 +237,6 @@ export const Hero = () => {
             <Info className="mr-2 h-4 w-4" />
             My journey
           </Button>
-
-          <JourneyModal isOpen={isShowing} onClose={toggle} />
         </div>
       </Section>
 
@@ -298,6 +296,7 @@ export const Hero = () => {
       </Section>
 
       <Form />
+      <JourneyModal isOpen={isShowing} onClose={toggle} />
     </div>
   );
 };

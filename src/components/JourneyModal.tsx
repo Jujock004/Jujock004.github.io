@@ -59,7 +59,7 @@ const JourneyModal = ({ isOpen, onClose }: JourneyModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-20 sm:pt-4">
       {/* Overlay */}
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
@@ -68,7 +68,7 @@ const JourneyModal = ({ isOpen, onClose }: JourneyModalProps) => {
 
       {/* Modal */}
       <div
-        className="relative bg-background border border-border rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto"
+        className="relative bg-background border border-border rounded-xl shadow-xl w-full max-w-lg max-h-[calc(100vh-5rem)] sm:max-h-[90vh] overflow-y-auto"
         role="dialog"
         aria-modal="true"
         aria-labelledby="journey-modal-title"
