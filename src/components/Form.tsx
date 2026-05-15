@@ -1,100 +1,132 @@
 import { Button } from './ui/button';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-hot-toast';
 import { Section } from './Section';
+import { Send, Loader2 } from 'lucide-react';
 
 export const Form = () => {
   const form = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
 
   const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!form.current) return;
 
-    if (form.current) {
-      try {
-        await emailjs.sendForm(
-          import.meta.env.VITE_SERVICE_ID!,
-          import.meta.env.VITE_TEMPLATE_ID!,
-          form.current,
-          import.meta.env.VITE_PUBLIC_KEY!
-        );
-        toast.success('Message sent successfully!');
-        form.current.reset();
-        window.scrollTo({ top: 0, left: 0 });
-      } catch (error) {
-        console.error('Error sending email:', error);
-        toast.error('Failed to send message. Please try again later.');
-      }
+    setSending(true);
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_SERVICE_ID!,
+        import.meta.env.VITE_TEMPLATE_ID!,
+        form.current,
+        import.meta.env.VITE_PUBLIC_KEY!
+      );
+      toast.success('Message sent successfully!');
+      form.current.reset();
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast.error('Failed to send message. Please try again later.');
+    } finally {
+      setSending(false);
     }
   };
 
   return (
     <Section
-      className="flex flex-col justify-center gap-8 py-20 scroll-mt-20"
+      className="flex flex-col justify-center gap-6 py-20 scroll-mt-20"
       id="contact"
     >
-      <h1 className="text-2xl font-bold flex justify-start">
-        Let's work together!
-      </h1>
-      <p className="text-muted-foreground">
-        I'm always looking for new challenges and opportunities to grow. If you
-        have a project in mind or just want to say hi, don't hesitate to contact
-        me.
-      </p>
+      <div className="flex flex-col items-end text-right">
+        <h1 className="text-2xl font-bold mb-2">Let's work together</h1>
+        <p className="text-sm text-muted-foreground max-w-lg">
+          I'm always open to new projects and opportunities. Have something in
+          mind? Drop me a message.
+        </p>
+      </div>
+
       <form
         ref={form}
-        className="flex flex-col w-full max-w-lg gap-4 mx-auto items-center bg-background p-6 rounded-md shadow-md border border-solid "
         onSubmit={sendEmail}
         autoComplete="off"
+        className="flex flex-col gap-4 w-full max-w-lg border border-border rounded-xl bg-background p-6 ml-auto"
       >
-        <div className="flex flex-col gap-4 w-full">
-          <label className="flex flex-col gap-3">
-            <span className="text-sm font-medium text-primary">Object</span>
-            <input
-              type="text"
-              name="title"
-              placeholder="Enter the object of your message"
-              className="border border-solid rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-              required
-            />
+        {/* Subject */}
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground">
+            Subject
           </label>
-          <label className="flex flex-col gap-3">
-            <span className="text-sm font-medium text-primary">Your name</span>
+          <input
+            type="text"
+            name="title"
+            placeholder="What's this about?"
+            required
+            className="bg-muted border border-border rounded-md px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition-colors"
+          />
+        </div>
+
+        {/* Name + Email */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-medium text-muted-foreground">
+              Your name
+            </label>
             <input
               type="text"
               name="name"
-              placeholder="Enter your name"
-              className="border border-solid rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+              placeholder="John Doe"
               required
               autoComplete="name"
+              className="bg-muted border border-border rounded-md px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition-colors"
             />
-          </label>
-          <label className="flex flex-col gap-3">
-            <span className="text-sm font-medium text-primary">Your email</span>
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-medium text-muted-foreground">
+              Your email
+            </label>
             <input
               type="email"
               name="email"
-              placeholder="Enter your email"
-              className="border border-solid rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+              placeholder="john@example.com"
               required
               autoComplete="email"
+              className="bg-muted border border-border rounded-md px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition-colors"
             />
-          </label>
-          <label className="flex flex-col gap-3">
-            <span className="text-sm font-medium text-primary">
-              Your message
-            </span>
-            <textarea
-              name="message"
-              placeholder="Type your message..."
-              className="border border-solid rounded-md p-2 focus:outline-none focus:ring-1 focus:ring-primary transition-colors min-h-20 resize-y"
-              required
-            ></textarea>
-          </label>
+          </div>
         </div>
-        <Button type="submit" className="mt-4 self-end cursor-pointer">
-          Send message
-        </Button>
+
+        {/* Message */}
+        <div className="flex flex-col gap-1.5">
+          <label className="text-xs font-medium text-muted-foreground">
+            Message
+          </label>
+          <textarea
+            name="message"
+            placeholder="Tell me about your project..."
+            required
+            className="bg-muted border border-border rounded-md px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring transition-colors min-h-[120px] resize-y"
+          />
+        </div>
+
+        {/* Submit */}
+        <div className="flex justify-end pt-1">
+          <Button
+            type="submit"
+            disabled={sending}
+            className="cursor-pointer gap-2"
+          >
+            {sending ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              <>
+                <Send className="h-4 w-4" />
+                Send message
+              </>
+            )}
+          </Button>
+        </div>
       </form>
     </Section>
   );

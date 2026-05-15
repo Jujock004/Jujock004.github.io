@@ -9,26 +9,30 @@ export const projectList = [
     description:
       'Developing a freemium OTT video hosting platform for a fictive company.',
     image: jestoneImg,
-    link: 'https://github.com/Jujock004/jestone',
+    github: 'https://github.com/Jujock004/jestone',
+    tags: ['React', 'Node.js', 'MySQL'],
   },
   {
     name: 'Pokemon Arena',
     description: 'Development of an interactive Pokédex and tournament system.',
     image: pokemonImg,
-    link: 'https://github.com/Jujock004/pokemon-arena',
+    github: 'https://github.com/Jujock004/pokemon-arena',
+    tags: ['React', 'TypeScript'],
   },
   {
     name: 'Ohé',
     description:
       'Community events platform with secure authentication and event management.',
     image: oheImg,
-    link: 'https://github.com/Jujock004/ohe',
+    github: 'https://github.com/Jujock004/ohe',
+    tags: ['React', 'Node.js', 'MySQL'],
   },
   {
     name: 'Wildly Done',
     description:
       'Development of a task management application in a 4-person team.',
     image: wildlyDoneImg,
-    link: 'https://github.com/Jujock004/Project-1-TD3.github.io',
+    github: 'https://github.com/Jujock004/Project-1-TD3.github.io',
+    tags: ['HTML', 'CSS', 'JavaScript'],
   },
 ];

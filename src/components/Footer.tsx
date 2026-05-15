@@ -1,8 +1,9 @@
 export const Footer = () => {
   return (
-    <footer className="flex justify-center items-center p-4">
-      <p className="text-muted-foreground">
-        ©2025 Julien Joecker • Made with React and TailwindCSS
+    <footer className="border-t border-border py-6 flex justify-center items-center">
+      <p className="text-xs text-muted-foreground">
+        © {new Date().getFullYear()} Julien Joecker · Made with React &
+        Tailwind CSS
       </p>
     </footer>
   );
