@@ -16,9 +16,10 @@ import useScrollToSection from '@/hooks/useScrollToSection';
 interface Project {
   name: string;
   description: string;
-  image: string;
-  github: string;
+  image: string | null;
+  github: string | null;
   tags: string[];
+  inProgress: boolean;
 }
 
 const projects = projectList as Project[];
@@ -49,7 +50,7 @@ const stackCategories = [
     ],
   },
   {
-    label: 'Base de données & outils',
+    label: 'Database & Tools',
     items: [
       { name: 'MySQL', icon: `${devicons}/mysql/mysql-original.svg` },
       { name: 'Git', icon: `${devicons}/git/git-original.svg` },
@@ -194,7 +195,7 @@ export const Hero = () => {
         className="flex flex-col justify-center gap-8 py-20 scroll-mt-20"
         id="about"
       >
-        <h1 className="text-2xl font-bold">About me</h1>
+        <h2 className="text-2xl font-bold">About me</h2>
         <div className="border bg-background text-foreground flex flex-col gap-6 p-6 rounded-xl">
           {/* Mini profile */}
           <div className="flex items-center gap-4">
@@ -258,6 +259,7 @@ export const Hero = () => {
               image={project.image}
               github={project.github}
               tags={project.tags}
+              inProgress={project.inProgress}
             />
           ))}
         </div>
@@ -268,7 +270,7 @@ export const Hero = () => {
         className="flex flex-col justify-center gap-8 sm:py-20 scroll-mt-20"
         id="stack"
       >
-        <h1 className="text-2xl font-bold">My stack</h1>
+        <h2 className="text-2xl font-bold">My stack</h2>
         <div className="border bg-background text-foreground flex flex-col gap-6 p-6 rounded-sm">
           {stackCategories.map((cat) => (
             <div key={cat.label}>

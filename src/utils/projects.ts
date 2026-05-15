@@ -5,34 +5,73 @@ import wildlyDoneImg from '@/assets/images/wildly-done.png';
 
 export const projectList = [
   {
+    name: 'Vivre au Pardailhan',
+    description:
+      'Website for a heritage association with a CMS to publish new blog articles independently.',
+    image: null,
+    github: null,
+    demo: null,
+    tags: ['Next.js'],
+    inProgress: true,
+  },
+  {
+    name: 'Take a Walk In My Shoes',
+    description:
+      'Charity website to collect donations and recruit volunteers, with a CMS to highlight events and past actions.',
+    image: null,
+    github: null,
+    demo: null,
+    tags: ['Next.js'],
+    inProgress: true,
+  },
+  {
+    name: 'Do You Know Traquenard',
+    description:
+      'Showcase website for a DJ collective to highlight their universe and upcoming events.',
+    image: null,
+    github: null,
+    demo: null,
+    tags: ['Next.js'],
+    inProgress: true,
+  },
+  {
     name: 'JESTONE',
     description:
-      'Developing a freemium OTT video hosting platform for a fictive company.',
+      'Freemium OTT video hosting platform. Final project at Wild Code School — built in 2 months with a team of 4 and presented to a jury.',
     image: jestoneImg,
     github: 'https://github.com/Jujock004/jestone',
+    demo: null,
     tags: ['React', 'Node.js', 'MySQL'],
+    inProgress: false,
   },
   {
     name: 'Pokemon Arena',
-    description: 'Development of an interactive Pokédex and tournament system.',
+    description:
+      'Interactive Pokédex and tournament system. First REST API project — built in 1 month with a team of 4.',
     image: pokemonImg,
     github: 'https://github.com/Jujock004/pokemon-arena',
+    demo: null,
     tags: ['React', 'TypeScript'],
+    inProgress: false,
   },
   {
     name: 'Ohé',
     description:
-      'Community events platform with secure authentication and event management.',
+      'Community events platform with authentication and event management. Solo project built in 2 weeks covering both client and server to assess progression.',
     image: oheImg,
     github: 'https://github.com/Jujock004/ohe',
+    demo: null,
     tags: ['React', 'Node.js', 'MySQL'],
+    inProgress: false,
   },
   {
     name: 'Wildly Done',
     description:
-      'Development of a task management application in a 4-person team.',
+      'Task management app built in 2 weeks with a team of 4. First group project in vanilla JavaScript to validate the fundamentals.',
     image: wildlyDoneImg,
     github: 'https://github.com/Jujock004/Project-1-TD3.github.io',
+    demo: null,
     tags: ['HTML', 'CSS', 'JavaScript'],
+    inProgress: false,
   },
 ];

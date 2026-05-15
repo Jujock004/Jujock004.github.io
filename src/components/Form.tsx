@@ -37,7 +37,7 @@ export const Form = () => {
       id="contact"
     >
       <div className="flex flex-col items-end text-right">
-        <h1 className="text-2xl font-bold mb-2">Let's work together</h1>
+        <h2 className="text-2xl font-bold mb-2">Let's work together</h2>
         <p className="text-sm text-muted-foreground max-w-lg">
           I'm always open to new projects and opportunities. Have something in
           mind? Drop me a message.

@@ -1,19 +1,66 @@
 <!doctype html>
-<html lang="fr" class="h-full">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary meta -->
     <meta name="author" content="Julien Joecker" />
     <meta
       name="description"
-      content="Développeur web, je crée des sites et applications web modernes et performants."
+      content="Julien Joecker — Freelance fullstack web developer based in Toulouse. Building modern, performant websites and applications."
     />
     <meta
       name="keywords"
-      content="développeur, web, site, application, moderne, performant"
+      content="web developer, fullstack, freelance, React, Node.js, Toulouse, JavaScript, TypeScript"
     />
-    <title>Julien Joecker | Développeur web</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jjoecker.netlify.app/" />
+    <meta
+      property="og:title"
+      content="Julien Joecker | Fullstack Web Developer"
+    />
+    <meta
+      property="og:description"
+      content="Freelance fullstack web developer based in Toulouse. Building modern, performant websites and applications."
+    />
+    <meta
+      property="og:image"
+      content="https://avatars.githubusercontent.com/u/179485912?v=4"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Julien Joecker | Fullstack Web Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="Freelance fullstack web developer based in Toulouse. Building modern, performant websites and applications."
+    />
+    <meta
+      name="twitter:image"
+      content="https://avatars.githubusercontent.com/u/179485912?v=4"
+    />
+
+    <title>Julien Joecker | Fullstack Web Developer</title>
+
+    <!-- Prevent dark mode flash -->
+    <script>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
 
   <body class="h-full">

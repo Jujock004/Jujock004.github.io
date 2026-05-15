@@ -15,7 +15,7 @@ const steps = [
   },
   {
     icon: GraduationCap,
-    tag: '2025',
+    tag: '2024 – 2025',
     title: 'Wild Code School',
     text: 'Intensive full-stack training. Earned my Web & Mobile Web Developer certificate with hands-on projects in modern web technologies.',
   },
