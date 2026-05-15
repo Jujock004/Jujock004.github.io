@@ -9,7 +9,7 @@ export const projectList = [
     description:
       'Website for a heritage association with a CMS to publish new blog articles independently.',
     image: null,
-    github: null,
+    github: 'https://github.com/Jujock004/vivre-au-pardailhan',
     demo: null,
     tags: ['Next.js'],
     inProgress: true,
@@ -19,7 +19,7 @@ export const projectList = [
     description:
       'Charity website to collect donations and recruit volunteers, with a CMS to highlight events and past actions.',
     image: null,
-    github: null,
+    github: 'https://github.com/Jujock004/alix-shanta-web',
     demo: null,
     tags: ['Next.js'],
     inProgress: true,
@@ -29,7 +29,7 @@ export const projectList = [
     description:
       'Showcase website for a DJ collective to highlight their universe and upcoming events.',
     image: null,
-    github: null,
+    github: 'https://github.com/Jujock004/traquenard',
     demo: null,
     tags: ['Next.js'],
     inProgress: true,
