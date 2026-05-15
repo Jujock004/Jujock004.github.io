@@ -4,8 +4,9 @@ import { buttonVariants } from './ui/button';
 import { LinkedinIcon } from '@/assets/icons/LinkedinIcon';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 import useScrollToSection from '@/hooks/useScrollToSection';
+import useTheme from '@/hooks/useTheme';
 
 const navLinks = [
   { label: 'About', id: 'about' },
@@ -19,6 +20,7 @@ const scrollToSection = useScrollToSection().scrollToSection;
 export const Header = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,6 +109,22 @@ export const Header = () => {
           >
             <LinkedinIcon size={16} className="text-foreground" />
           </a>
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className={cn(
+              buttonVariants({ variant: 'outline' }),
+              'size-9 p-0 cursor-pointer'
+            )}
+            aria-label={
+              theme === 'dark'
+                ? 'Passer en mode clair'
+                : 'Passer en mode sombre'
+            }
+          >
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
 
           {/* Burger — mobile only */}
           <button

@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { ProjectCard } from './ProjectCard';
 import { projectList } from '@/utils/projects';
 import { Info, MapPin, ChevronDown, Briefcase, Code } from 'lucide-react';
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form } from './Form';
 import JourneyModal from './JourneyModal';
 import useModal from '@/hooks/useModal';
