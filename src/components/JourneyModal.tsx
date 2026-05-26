@@ -1,39 +1,21 @@
 import { X, Megaphone, GraduationCap, Rocket, Heart } from 'lucide-react';
 import { useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface JourneyModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const steps = [
-  {
-    icon: Megaphone,
-    tag: '2019 – 2024',
-    title: 'From marketing to development',
-    text: 'After 5 years in marketing, I discovered my passion for technology and decided to pivot toward building digital solutions.',
-  },
-  {
-    icon: GraduationCap,
-    tag: '2024 – 2025',
-    title: 'Wild Code School',
-    text: 'Intensive full-stack training. Earned my Web & Mobile Web Developer certificate with hands-on projects in modern web technologies.',
-  },
-  {
-    icon: Rocket,
-    tag: 'Now',
-    title: 'Next steps',
-    text: 'Focusing on Next.js. Working toward the official Software Designer and Developer title through experience and continuous learning.',
-  },
-  {
-    icon: Heart,
-    tag: 'Always',
-    title: 'My passion',
-    text: "The endless possibility to create, innovate, and solve problems through code. Every project is a new chance to push what's possible.",
-  },
-];
+const stepIcons = [Megaphone, GraduationCap, Rocket, Heart];
 
 const JourneyModal = ({ isOpen, onClose }: JourneyModalProps) => {
+  const { t } = useLanguage();
+  const steps = t.journey.steps.map((step, i) => ({
+    ...step,
+    icon: stepIcons[i],
+  }));
+
   useEffect(() => {
     if (!isOpen) return;
     const scrollY = window.scrollY;
@@ -77,19 +59,19 @@ const JourneyModal = ({ isOpen, onClose }: JourneyModalProps) => {
         <div className="flex items-start justify-between px-6 pt-5 pb-4 border-b border-border">
           <div>
             <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-1">
-              About me
+              {t.journey.aboutMe}
             </p>
             <h2
               id="journey-modal-title"
               className="text-xl font-semibold tracking-tight"
             >
-              My Journey
+              {t.journey.title}
             </h2>
           </div>
           <button
             onClick={onClose}
             className="mt-0.5 h-7 w-7 rounded-md border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
-            aria-label="Close"
+            aria-label={t.journey.close}
           >
             <X className="h-3.5 w-3.5" />
           </button>

@@ -12,6 +12,7 @@ import { Form } from './Form';
 import JourneyModal from './JourneyModal';
 import useModal from '@/hooks/useModal';
 import useScrollToSection from '@/hooks/useScrollToSection';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Project {
   name: string;
@@ -26,9 +27,9 @@ const projects = projectList as Project[];
 
 const devicons = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
 
-const stackCategories = [
+const stackIcons = [
   {
-    label: 'Frontend',
+    category: 'frontend' as const,
     items: [
       { name: 'React', icon: `${devicons}/react/react-original.svg` },
       {
@@ -43,14 +44,14 @@ const stackCategories = [
     ],
   },
   {
-    label: 'Backend',
+    category: 'backend' as const,
     items: [
       { name: 'Node.js', icon: `${devicons}/nodejs/nodejs-plain.svg` },
       { name: 'PHP', icon: `${devicons}/php/php-original.svg` },
     ],
   },
   {
-    label: 'Database & Tools',
+    category: 'databaseTools' as const,
     items: [
       { name: 'MySQL', icon: `${devicons}/mysql/mysql-original.svg` },
       { name: 'Git', icon: `${devicons}/git/git-original.svg` },
@@ -63,6 +64,12 @@ const TypeWriter = ({ text, delay = 50 }: { text: string; delay?: number }) => {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setCurrentText('');
+    setCurrentIndex(0);
+    setDone(false);
+  }, [text]);
 
   useEffect(() => {
     if (currentIndex < text.length) {
@@ -88,33 +95,14 @@ const TypeWriter = ({ text, delay = 50 }: { text: string; delay?: number }) => {
 
 const scrollToSection = useScrollToSection().scrollToSection;
 
-const ScrollIndicator = () => (
-  <a
-    href="#about"
-    onClick={(e) => {
-      e.preventDefault();
-      scrollToSection('about');
-    }}
-    className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
-    aria-label="Scroll vers la section suivante"
-  >
-    <span className="text-xs tracking-widest uppercase">Scroll</span>
-    <ChevronDown className="h-4 w-4 animate-bounce" />
-  </a>
-);
-
-const AvailabilityBadge = () => (
-  <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-    <span className="relative flex h-2 w-2">
-      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-    </span>
-    Open to work
-  </span>
-);
-
 export const Hero = () => {
   const { isShowing, toggle } = useModal();
+  const { t } = useLanguage();
+
+  const stackCategories = stackIcons.map((cat) => ({
+    label: t.stack[cat.category],
+    items: cat.items,
+  }));
 
   return (
     <div className="scroll-smooth">
@@ -132,14 +120,18 @@ export const Hero = () => {
         </Avatar>
 
         <div className="flex flex-col items-center gap-3">
-          <h1 className="text-4xl font-bold text-primary">Hi, I'm Julien 👋</h1>
+          <h1 className="text-4xl font-bold text-primary">{t.hero.greeting}</h1>
           <p className="text-lg text-muted-foreground">
-            <TypeWriter
-              text="A web developer passionate in building new projects."
-              delay={30}
-            />
+            <TypeWriter text={t.hero.tagline} delay={30} />
           </p>
-          <AvailabilityBadge />
+          {/* Availability badge */}
+          <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+            </span>
+            {t.hero.openToWork}
+          </span>
         </div>
 
         <nav className="flex items-center gap-2">
@@ -176,18 +168,32 @@ export const Hero = () => {
             }
             className="text-lg rounded-full cursor-pointer"
           >
-            Contact me
+            {t.hero.contactMe}
           </Button>
           <Button
             variant="outline"
             onClick={() => window.open('/CV_Julien_Joecker.pdf')}
             className="text-lg rounded-full cursor-pointer"
           >
-            My resume
+            {t.hero.myResume}
           </Button>
         </div>
 
-        <ScrollIndicator />
+        {/* Scroll indicator */}
+        <a
+          href="#about"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('about');
+          }}
+          className="flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          aria-label={t.hero.scrollAriaLabel}
+        >
+          <span className="text-xs tracking-widest uppercase">
+            {t.hero.scroll}
+          </span>
+          <ChevronDown className="h-4 w-4 animate-bounce" />
+        </a>
       </Section>
 
       {/* ── About ── */}
@@ -195,7 +201,7 @@ export const Hero = () => {
         className="flex flex-col justify-center gap-8 py-20 scroll-mt-20"
         id="about"
       >
-        <h2 className="text-2xl font-bold">About me</h2>
+        <h2 className="text-2xl font-bold">{t.about.title}</h2>
         <div className="border bg-background text-foreground flex flex-col gap-6 p-6 rounded-xl">
           {/* Mini profile */}
           <div className="flex items-center gap-4">
@@ -211,10 +217,10 @@ export const Hero = () => {
                   <MapPin className="h-3 w-3" /> Toulouse
                 </span>
                 <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                  <Briefcase className="h-3 w-3" /> Freelance
+                  <Briefcase className="h-3 w-3" /> {t.about.freelance}
                 </span>
                 <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                  <Code className="h-3 w-3" /> Full-stack
+                  <Code className="h-3 w-3" /> {t.about.fullStack}
                 </span>
               </div>
             </div>
@@ -222,10 +228,7 @@ export const Hero = () => {
 
           {/* Bio */}
           <p className="text-sm text-muted-foreground leading-relaxed">
-            I made the jump from 5 years in marketing to full-stack development
-            and earned my Web & Mobile Developer certificate at Wild Code
-            School. Since then, I've been sharpening my skills the self-taught
-            way — building real projects and taking on freelance work.
+            {t.about.bio}
           </p>
 
           {/* CTA */}
@@ -235,7 +238,7 @@ export const Hero = () => {
             onClick={toggle}
           >
             <Info className="mr-2 h-4 w-4" />
-            My journey
+            {t.about.myJourney}
           </Button>
         </div>
       </Section>
@@ -246,20 +249,27 @@ export const Hero = () => {
         id="projects"
       >
         <h1 className="text-2xl font-bold flex justify-end">
-          My latest projects
+          {t.projects.title}
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.name}
-              title={project.name}
-              description={project.description}
-              image={project.image}
-              github={project.github}
-              tags={project.tags}
-              inProgress={project.inProgress}
-            />
-          ))}
+          {projects.map((project) => {
+            const desc =
+              t.projects.descriptions[
+                project.name as keyof typeof t.projects.descriptions
+              ] ?? project.description;
+            return (
+              <ProjectCard
+                key={project.name}
+                title={project.name}
+                description={desc}
+                image={project.image}
+                github={project.github}
+                tags={project.tags}
+                inProgress={project.inProgress}
+                inProgressLabel={t.projects.inProgress}
+              />
+            );
+          })}
         </div>
       </Section>
 
@@ -268,7 +278,7 @@ export const Hero = () => {
         className="flex flex-col justify-center gap-8 sm:py-20 scroll-mt-20"
         id="stack"
       >
-        <h2 className="text-2xl font-bold">My stack</h2>
+        <h2 className="text-2xl font-bold">{t.stack.title}</h2>
         <div className="border bg-background text-foreground flex flex-col gap-6 p-6 rounded-sm">
           {stackCategories.map((cat) => (
             <div key={cat.label}>

@@ -2,13 +2,14 @@ import jestoneImg from '@/assets/images/jestone.png';
 import pokemonImg from '@/assets/images/pokemon-arena.png';
 import oheImg from '@/assets/images/ohe.png';
 import wildlyDoneImg from '@/assets/images/wildly-done.png';
+import pardailhanImg from '@/assets/images/vivre-au-pardailhan.png';
 
 export const projectList = [
   {
     name: 'Vivre au Pardailhan',
     description:
       'Website for a heritage association with a CMS to publish new blog articles independently.',
-    image: null,
+    image: pardailhanImg,
     github: 'https://github.com/Jujock004/vivre-au-pardailhan',
     demo: null,
     tags: ['Next.js'],

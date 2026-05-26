@@ -8,6 +8,7 @@ interface ProjectCardProps {
   github: string | null;
   tags: string[];
   inProgress?: boolean;
+  inProgressLabel?: string;
 }
 
 export const ProjectCard = ({
@@ -17,6 +18,7 @@ export const ProjectCard = ({
   github,
   tags,
   inProgress = false,
+  inProgressLabel = 'In Progress',
 }: ProjectCardProps) => {
   return (
     <Card className="group overflow-hidden gap-0 py-0 transition-all duration-200 hover:-translate-y-1 flex flex-col">
@@ -50,7 +52,7 @@ export const ProjectCard = ({
         {inProgress && (
           <span className="absolute top-2.5 right-2.5 inline-flex items-center gap-1.5 text-xs font-medium px-2 py-1 rounded-full bg-background/90 border border-border text-foreground backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-            In progress
+            {inProgressLabel}
           </span>
         )}
       </div>

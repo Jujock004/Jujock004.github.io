@@ -7,13 +7,7 @@ import { useState, useEffect } from 'react';
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import useScrollToSection from '@/hooks/useScrollToSection';
 import useTheme from '@/hooks/useTheme';
-
-const navLinks = [
-  { label: 'About', id: 'about' },
-  { label: 'Projects', id: 'projects' },
-  { label: 'Stack', id: 'stack' },
-  { label: 'Contact', id: 'contact' },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const scrollToSection = useScrollToSection().scrollToSection;
 
@@ -21,6 +15,14 @@ export const Header = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { language, t, toggleLanguage } = useLanguage();
+
+  const navLinks = [
+    { label: t.nav.about, id: 'about' },
+    { label: t.nav.projects, id: 'projects' },
+    { label: t.nav.stack, id: 'stack' },
+    { label: t.nav.contact, id: 'contact' },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,9 +40,9 @@ export const Header = () => {
     });
 
     return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Fermer le menu au resize desktop
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 768) setMenuOpen(false);
@@ -91,7 +93,7 @@ export const Header = () => {
           ))}
         </nav>
 
-        {/* Icônes sociales + burger */}
+        {/* Icônes sociales + contrôles */}
         <div className="flex items-center gap-2">
           <a
             href="https://github.com/Jujock004/"
@@ -109,6 +111,20 @@ export const Header = () => {
           >
             <LinkedinIcon size={16} className="text-foreground" />
           </a>
+
+          {/* Language toggle */}
+          <button
+            onClick={toggleLanguage}
+            className={cn(
+              buttonVariants({ variant: 'outline' }),
+              'size-9 p-0 cursor-pointer text-xs font-semibold'
+            )}
+            aria-label={
+              language === 'fr' ? 'Switch to English' : 'Passer en français'
+            }
+          >
+            {language === 'fr' ? 'EN' : 'FR'}
+          </button>
 
           {/* Theme toggle */}
           <button
